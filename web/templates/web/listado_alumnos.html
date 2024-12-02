@@ -1,0 +1,59 @@
+{% extends "web/base.html" %}
+
+{% block titulo %} Listado de Alumnos {% endblock %}
+{% block extra_css %}{% endblock %}
+
+{% block main %}
+    <h2>Listado de Alumnos</h2>
+    {% if cuota_al_dia %}
+        <p style="padding: 15px; background-color: green; color: white;">No debe dinero</p>
+    {% else %}
+        <p style="padding: 15px; background-color: red; color: white;">Debe la cuota</p>
+    {% endif %}
+
+    <section>
+        {% for alumno in alumnos %}
+            <article>
+                <p>{{ alumno | upper }}</p>
+            </article>
+        {% empty %}
+        <article>
+            <p>No hay alumnos cargados</p>
+        </article>
+        {% endfor %}
+    </section>        
+{% endblock %}
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado Alumnos</title>
+</head>
+<body>
+    <h1>Listado de Alumnos</h1>
+    <li><a href="{% url 'index' %}">Volver</a></li>
+    {% if cuota_al_dia %}
+        <p style="padding: 15px; background-color: green; color: white;">No debe dinero</p>
+    {% else %}
+        <p style="padding: 15px; background-color: red; color: white;">Debe la cuota</p>
+    {% endif %}
+
+    <section>
+        {% for alumno in alumnos %}
+            <article>
+                <p>{{ alumno | upper }}</p>
+            </article>
+        {% empty %}
+        <article>
+            <p>No hay alumnos cargados</p>
+        </article>
+        {% endfor %}
+    </section>
+</body>
+</html> -->
