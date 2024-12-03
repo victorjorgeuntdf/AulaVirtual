@@ -7,6 +7,14 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
+    background: linear-gradient(to bottom, #f64f59, #c471ed, #12c2e9);
+}
+
+.centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header, main, footer{
@@ -14,13 +22,15 @@ header, main, footer{
 }
 
 header{
-    background-color: gray;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 main{
     flex: 1;
+    flex-direction: column;
 }
 
 footer{
-    background-color: rgb(48, 48, 48);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
 }
