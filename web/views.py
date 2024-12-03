@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
+from django.shortcuts import redirect 
+
+from .forms import *
+
 import datetime
+
 # Create your views here.
 
 def index(request):
@@ -35,3 +40,14 @@ def listado_alumnos(request):
        ]
     } """
     return render(request, 'web/listado_alumnos.html', context)
+
+def alta_alumno(request):
+    contexto = {}
+    if request.method == "GET":
+        contexto['alta_alumno_form']= AltaAlumnoForm()
+    else: #Asumo que es un POST
+        print(request.POST)
+        contexto['alta_alumno_form']= AltaAlumnoForm(request.POST)    
+
+        return redirect('index')
+    return render(request, 'web/alta_alumno.html', contexto)
