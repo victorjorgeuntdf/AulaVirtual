@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
 from django.shortcuts import redirect 
-
+from django.contrib import messages
 from .forms import *
 
 import datetime
@@ -46,8 +46,12 @@ def alta_alumno(request):
     if request.method == "GET":
         contexto['alta_alumno_form']= AltaAlumnoForm()
     else: #Asumo que es un POST
-        print(request.POST)
-        contexto['alta_alumno_form']= AltaAlumnoForm(request.POST)    
+        form = AltaAlumnoForm(request.POST)
+        contexto['alta_alumno_form'] = form
+        
+        if form.is_valid():
+            messages.success(request, 'El alumno fue dado de alta con exito')
 
-        return redirect('index')
+            return redirect('index')
+
     return render(request, 'web/alta_alumno.html', contexto)
